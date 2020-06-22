@@ -1,0 +1,15 @@
+<h2><%= current_user.username %>さんのページ</h2>
+<table>
+  <tr>
+    <th>Id</th><th>Title</th><th>Description</th>
+  </tr>
+  <% @tasks.each do |task| %>
+  <tr>
+    <td><%= task.id %></td>
+    <td><%= task.title %></td>
+    <td><%= task.description %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= link_to '一覧に戻る', tasks_url %></p>
