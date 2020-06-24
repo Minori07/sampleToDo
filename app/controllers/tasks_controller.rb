@@ -28,6 +28,9 @@ class TasksController < ApplicationController
 
   def update
     @task = target_task params[:id]
+    if @task.completed
+      @task.completed_at = Date.today
+    end
     @task.update(task_params)
     redirect_to tasks_url
   end
@@ -44,7 +47,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description)
+    params.require(:task).permit(:title, :description, :completed, :completed_at)
   end
 
 end

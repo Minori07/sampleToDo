@@ -3,13 +3,18 @@
 <p>ユーザー数: <%= @user.length %>,   ユーザー: <%= current_user.username %></p>
 <table>
   <tr>
-    <th>Id</th><th>Title</th><th>Description</th><th>User</th><th></th><th></th>
+    <th>Id</th><th>Title</th><th>Description</th><th>Comp</th><th>Comp_at</th><th>User</th><th></th><th></th>
   </tr>
 	<% @tasks.each do |task| %>
 	  <tr>
 	    <td><%= task.id %></td>
 	    <td><%= task.title %></td>
 	    <td><%= task.description %></td>
+	    <th><%if task.completed %>
+	    		○
+	    	<% end %>
+	    </th>
+	    <th><%= task.completed_at %></th>
 	    <td><%= @user[task.user_id-1].username %></td>
 	  </tr>
 	<% end %>
