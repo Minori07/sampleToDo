@@ -1,13 +1,15 @@
 <h2><%= current_user.username %>さんのページ</h2>
 <table>
   <tr>
-    <th>Id</th><th>Title</th><th>Description</th>
+    <th>Id</th><th>Title</th><th>Description</th><th></th><th></th>
   </tr>
   <% @tasks.each do |task| %>
   <tr>
     <td><%= task.id %></td>
     <td><%= task.title %></td>
     <td><%= task.description %></td>
+    <td><%= link_to 'Edit', edit_task_path(task) %></td>
+    <td><%= link_to 'Delete', task_path(task), method: :delete %></td>
   </tr>
   <% end %>
 </table>

@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def index
-  	@tasks
+  	@tasks = Task.all
   	# for var in User.all do
   	# 	@tasks = var.tasks
   	# end
@@ -20,6 +20,22 @@ class TasksController < ApplicationController
 	@task = current_user.tasks.new task_params
 	@task.save!
 	redirect_to tasks_url
+  end
+
+  def edit
+    @task = target_task params[:id]
+  end
+
+  def update
+    @task = target_task params[:id]
+    @task.update(task_params)
+    redirect_to tasks_url
+  end
+
+  def destroy
+    @task = target_task params[:id]
+    @task.destroy
+    redirect_to tasks_url
   end
 
   private

@@ -1,22 +1,18 @@
 <h1>Tasks#index</h1>
 <p>Find me in app/views/tasks/index.html.erb</p>
-<%= current_user.username %><br>
-<%= @user.length %>
+<p>ユーザー数: <%= @user.length %>,   ユーザー: <%= current_user.username %></p>
 <table>
   <tr>
-    <th>Id</th><th>Title</th><th>Description</th><th>User_id</th>
+    <th>Id</th><th>Title</th><th>Description</th><th>User</th><th></th><th></th>
   </tr>
-  <% for var in @user do %>
-  	<% @tasks = var.tasks %>
 	<% @tasks.each do |task| %>
 	  <tr>
 	    <td><%= task.id %></td>
 	    <td><%= task.title %></td>
 	    <td><%= task.description %></td>
-	    <td><%= task.user_id %></td>
+	    <td><%= @user[task.user_id-1].username %></td>
 	  </tr>
 	<% end %>
-  <% end %>
 </table>
 
 <p><%= link_to 'ToDoの作成', new_task_path %></p>
